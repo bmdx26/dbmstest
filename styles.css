@@ -130,3 +130,48 @@ nav ul li a:hover {
     display: flex;
   }
 }
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+}
+
+.search-input {
+  padding: 10px 20px;
+  padding-right: 40px;
+  border: 2px solid #ff6347;
+  border-radius: 20px;
+  font-size: 16px;
+  width: 300px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input:focus {
+  border-color: #ff4500;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px; 
+  color: #ff6347; 
+}
+
+
+.search-icon:hover {
+  color: #ff4500;
+}
