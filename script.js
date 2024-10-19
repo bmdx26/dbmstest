@@ -141,3 +141,35 @@ registerToggle.addEventListener('click', () => {
   registerToggle.classList.add('active');
   loginToggle.classList.remove('active');
 });
+
+// Login Form Submission
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Collect form data
+  const formData = new FormData(loginForm);
+  
+  // Send the data to Django
+  fetch("/your-login-url/", { // Replace with your actual login URL
+      method: "POST",
+      headers: {
+          "X-CSRFToken": getCookie("csrftoken") // Include CSRF token if required
+      },
+      body: formData,
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          console.log("Login Success:", data.message);
+          modal.style.display = 'none'; // Close modal on success
+          loginForm.reset(); // Reset form
+          // Optionally redirect or update UI
+      } else {
+          console.error("Login Error:", data.message);
+          alert(data.message); // Alert user on failure
+      }
+  })
+  .catch((error) => {
+      console.error("Error:", error);
+  });
+});
